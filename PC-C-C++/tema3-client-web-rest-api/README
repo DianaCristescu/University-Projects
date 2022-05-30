@@ -1,0 +1,77 @@
+Tema 3 Client Web. Comunicaţie cu REST API.
+Cristescu Diana-Andreea 324CDa
+
+--------------------------------------------------------------------------------------------------------
+
+***
+This project is based on the implementation of lab 10 from school. I also used the nlohmann library for 
+json parsing, which is included in the archive. To run the application use make run and make clean. To see
+the clien's message to the server and the server's resonse use the commented code in the send_request
+function from commands.cpp.
+***
+
+------------------------------------------ client.cpp --------------------------------------------------
+
+  commands: register      -> username, password                           => done / error
+            login         -> username, password                           => done / error
+            enter_library -> no input                                     => done / error
+            get_books     -> no input                                     => list of books
+            get_book      -> id                                           => book details
+            add_book      -> title, author, publisher, genre, page count  => done / error
+            delete_book   -> id                                           => done / error
+            logout        -> no input                                     => done / error
+            exit          -> no input                                     => quits program
+  This program comunicates with the rest api, keeping the login cookie and the JWT token.
+  It waits until it the user writes one of the above commands and acts accordingly.
+
+
+
+--------------------------------------- commands.cpp: -------------------------------------------------
+
+-send_request: takes a message, sends it to the server;
+               returns the response
+
+-process_register: interprets the server's response to the register command;
+                   returns the result - done / error
+
+-command_register: gets username and password from the user and constructs the message for the server;
+                   returns the result - done / error
+
+-process_login: interprets the server's response to the login command;
+                returns the result - done / error - and login cookie
+
+-command_login: gets username and password from the user and constructs the message for the server;
+ returns result - done / error - and login cookie
+
+-command_enter_library: constructs the message for the server for the enter_library command and
+                        interprets the response;
+                        returns the result - done / error - and the JWT token
+
+-command_get_books: constructs the message for the server for the get_books command and interprets
+                    the response;
+                    returns the response - a list of books (in string form) / error
+
+-process_get_book: interprets the server's response to the get_book command;
+                   returns the result - a list of the book's characteristics (in string form) / error
+
+-command_get_book: gets id and constructs the message for the server for the get_book command;
+                   returns the result - a list of the book's characteristics (in string form) / error
+
+-process_add_book: interprets the server's response to the add_book command;
+                   returns the result - done / error
+
+-command_add_book: gets title, author, genre, publisher and page count and
+                   constructs the message for the server for the get_book command;
+                   returns the result - done / error
+
+-process_delete_book: interprets the server's response to the delete_book command;
+                      returns the result - done / error
+
+-command_delete_book: gets id and constructs the message for the server for the delete_book command;
+                      returns the response - done / error
+
+-process_logout: interprets the server's response to the logout command;
+                 returns the result - done / error
+
+-command_logout: constructs the message for the server for the logout command and interprets the response;
+                 returns the response - done / error

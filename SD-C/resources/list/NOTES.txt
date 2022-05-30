@@ -1,0 +1,11 @@
+lista : init
+        insert(cu pozitie)
+        delete(cu pozitie)
+        length
+        getNode(imi da pozitia)
+        destroy
+        
+typedef struct node {
+    void *paylode;
+    struct node *next;
+}  Tnode, *Node;

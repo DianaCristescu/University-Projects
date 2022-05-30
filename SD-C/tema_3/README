@@ -1,0 +1,23 @@
+//pregatesc variabilele
+//citesc n, m
+//citesc toate nodurile
+
+//Cerinta 1-------------------------------------------------------------------
+    //adaug laturile orientate in listele de adiacenta
+    //verific graful
+    //transform graful orientat intr-un graf neorientat
+    //dealoc listele ajutatoare
+
+//Cerinta 2-------------------------------------------------------------------
+    //adaug laturile orientate in listele de adiacenta
+    //citesc k
+    //citesc k linii
+    //procesez k linii (scot x, y si lista O)
+        //procesez x
+        //procesez y
+        //procesez O
+    //dealocare lines
+    //algoritm-----------------------------------------------------
+    //dealocare x, y, O
+    
+//dealocari finale

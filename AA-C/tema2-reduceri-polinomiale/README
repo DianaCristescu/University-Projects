@@ -1,0 +1,48 @@
+Cristescu Diana-Andreea 324CD
+
+## Analiza Algoritmilor 2021 - Tema2
+## Pentru a rula checker-ul, folosiți comanda `./check`
+
+Calcularea si accesarea variabilelor pentru oracol:
+n = numarul nodurilor
+x(i, v); i = pozitia din solutie, v = nodul din graf 
+variabila = n*(i-1) + v
+i = variabila/n (daca variabila%n == 0 se mai scade 1)
+v = variabila%n (daca variabila%n == 0 se considera v = n)
+
+Retele:
+*logica:
+Se citesc datele, aplica clauzele, apeleaza oracolul, descifreaza respunsul si afiseaza
+la STDOUT.
+
+*clauze:
+1: Oricare ar fi {i| 1<=i<=k} exista x(i, v) 
+-> exista cel putin o variabila care indica faptul ca pozitia i este ocupata
+2: Oricare ar fi {i, j| i!=j} si 
+Oricare ar fi {v, w noduri| v nu are conexiune cu w && v!=w} !x(i, v)||!x(j, w)
+-> Doua noduri care nu au o conexiune nu pot fi amandoua in solutie 
+=> oricare 2 noduri din solutie au o conexiune
+3: Oricare ar fi {i, j| i!=j} si Oricare ar fi [v nod] !x(i, v)||!x(j, v)
+-> un nod nu poate ocupa doua pozitii
+4: Oricare ar fi {i| 1<=i<=k} si Oricare ar fi {v, w noduri| v!=w} !x(i, v)||!x(i, w)
+-> o pozitie nu poate fi ocupata de doua noduri
+
+Reclame:
+*logica:
+Se citesc datele si calculeaza graful transpus. Folosind graful transpus putem apela 
+retele.solve pe el pentru a gasii nodurile care nu fac parte din solutie. Dupa gasirea
+solutiei se calculeaza si afiseaza raspunsul.
+
+Registre:
+*logica:
+Se citesc datele, aplica clauzele, apeleaza oracolul, descifreaza respunsul si afiseaza
+la STDOUT.
+
+*clauze:
+1: Oricare ar fi {v| 1<=v<=n} exista x(i, v) 
+-> fiecare variabila ocupa minim un registru
+2: Oricare ar fi {i, j| i!=j} si Oricare ar fi [v nod] !x(i, v)||!x(j, v)
+-> un variabila nu poate ocupa doua registre
+3: Oricare ar fi {v, w noduri| v are conexiune cu w && v!=w} si 
+Oricare ar fi {i| 1<=i<=k} !x(i, v)||!x(i, w)
+-> doua variabile care au o conexiune nu pot fi in acelasi registru

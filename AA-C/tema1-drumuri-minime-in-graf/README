@@ -1,0 +1,55 @@
+Cristescu Diana-Andreea 324CD
+
+src: implementarea algoritmilor
+- bucket -> implementarea de baza a structuri de date tip bucket (folosit in 
+            algoritmul lui Dial)
+- Graph -> clasa folosita pentru stocarea grafurilor (este compusa dintr-o lista
+           de liste de int-uri)
+- Weight -> clasa folosita pentru stocarea atat a indicelui nodului cat si a
+                  costului sau
+- ShortestPath -> implementarea celor 3 algoritmi (dijkstra, dial-dial adaptat si
+                  dag-cea mai eficienta metoda pentru grafuri orientate aciclice)
+               -> functiile de testare pentru pentru fiecare dintre cei 3 algoritmi
+                  (testDijkstra, testDial, testDag) - se ocupa cu citirea grafului, 
+                  aplicarea algoritmilor, salvarea raspunsului intr-un fisier .out
+                  si compararea rezultatului cu referinta corespunzatoare
+               -> printShortestPaths -> scrie lista de costuri rezultata in fisierul dat
+               -> topologicalSortRecursive -> sorteaza nodurile din graf topologic
+                  (pentru algoritmul dag)
+
+in: testele (nodul pentru care se vor afla costurile si graful dat ca input) (sintaxa: testX.in)
+- pe prima linie se afla nodul pentru care se va calcula distanta catre restul nodurilor
+  din graf
+- restul fisierului consta intr-o matrice de adiacenta cu costuri (-1 = nu exista drum intre
+  acele doua noduri, in rest numarul reprezinta costul)
+  -> citirea matricii:
+      0  1  2  3 
+    0 costurile de la 0 la celalalte noduri
+    1 costurile de la 1 la celalalte noduri
+    2 costurile de la 2 la celalalte noduri
+    3 costurile de la 3 la celalalte noduri
+
+out: rezultatele calculate cu ajutorul algoritmilor implementati (sintaxa: testX.out)
+- citirea rezultatelor:
+  0+ = costul drumului
+  - = nu exista nici un drum posibil de la nodul pentru care am calculat la nodul respectiv
+
+ref: rezultatele calculate de mana in prealabil (sintaxa: testX)
+- se citesc la fel ca si fisierele din out
+
+makefile:
+- make -> compileaza fisierele sursa
+- make clean -> sterge atat fisierele compilate cat si fisierele .out
+- make run-p1/run-p2/run-p3 -> ruleaza testele pe algoritmul dijkstra, dial, respectiv dag
+- make run-best -> ruleaza testele pe algoritmul dijkstra
+
+Documentatie:
+- pseudocod algoritmi -> dijkstra: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+                                   https://www.programiz.com/dsa/dijkstra-algorithm
+                      -> dial: https://www.geeksforgeeks.org/dials-algorithm-optimized-dijkstra-for-small-range-weights/
+                      -> dag: https://dzone.com/articles/algorithm-week-shorted-path
+                              https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/
+                              https://github.com/sritej/Shortest-Path/blob/master/src/algorithms/dijkstra/DialDijkstra.java
+- alte surse de documentatie folosite -> LinkedList: https://www.geeksforgeeks.org/linked-list-in-java/#
+                                      -> Java Vector: https://www.javatpoint.com/java-vector
+                                      -> Topological Sorting Algorithm: https://www.baeldung.com/cs/dag-topological-sort

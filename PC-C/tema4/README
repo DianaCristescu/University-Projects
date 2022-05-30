@@ -1,0 +1,51 @@
+Task 01:
+-doua cicluri for care concateneaza pe combinatia de cifre aratata
+ in enuntul task-ului dupa care un spatiu si la sfarsitul ciclului
+ cu j se concateneaza un \n ca sa se faca diferenta intre linii in
+ stringul final
+Task 02:
+-am folosit functia strtok pentru a impartii stringul in numere si
+ dupa le-am transformat din char* in int cu functia atoi ca sa le 
+ pot aduna 
+Task 03: 
+-am diferentiat cele doua cazuri prin primul if dupa care daca numarul
+ de cifre ramase e par am schimbat intre ele cifrele de pe pozitiile k
+ si k+1 iterand prin vector de la k=1 pana la k=vect[0] cu k+=2
+-in celalalt caz am luat un for de la k=0 pana la k=vect[0]/2 cu k++
+ si am schimbat intre ele elementul de pe pozitia k cu cel de pe pozitia
+ v[0]-k+1(elementul in oglinda cu primul) pentru a inversa sirul(omitand
+ primul element)
+-la sfarsit am transformat vectorul de int intr-un char*
+Task 04:
+-am alocat structurile Game si Player precum a fost cerut
+Task 05:
+-Player: -am citit variabilele name, color si hat dupa care m-am asigurat
+ ca la sfarsit penultimul caracter nu e un \n inlocuindu-l cu un \0
+         -am citit variabila numberOfLocations dupa care am transformat-o
+          intr-un numar si am atribuit-o 
+         -am alocat spatiu variabilei locations si am folosit str_tok pentru
+          a citi pe rand x si y si a le atribuii vectorului locations
+         -pentru variabila role am observat ca nu pot sa aleg tipul de enum
+          corect si sa il atribui comparand ce am citit prin strcmp asa ca 
+          am verificat ce este a doua litera din string-ul citit(pentru ca 
+          este diferita la toate enum-urile) si dupa am atribuit enum-ul 
+          corespunzator
+-Game: -am citit numele cum am citit si la player numele
+       -la killRange si numberOfCrewmates am procedat ca si la numberOfLocations
+       -i-am alocat lui crewmates spatiul necesar si dupa folosind un for
+        loop de la i=0 pana la i=numberOfCrewmates-1 cu i++ am atribuit 
+        vectorului crewmates structurile Player citite apeland ReadPlayer 
+       -i-am atribuit variabilei impostor structura Player care a fost
+        citita in acelasi mod ca si la crewmates
+Task 06:
+-am citit variabilele name, color, hat din structura player si am verificat daca 
+ un spatiu care nu e litera la sfarsit, caz in care am pus un \0 pe penultima
+ pozitie
+-la acest task am afisat flosind fprintf cu formatul necesar variabilelor 
+ pe care le printez si un \n la sfarsitul fiecarei linii noi si \t acolo
+ unde trebuia
+-variabila role din structura player am aflat-o comparand-o cu cifra pe care
+ o reprezinta si salvand-ui varianta char* a numelui intr-o variabila noua
+-pentru a printa locatiile am folosit un ciclu for de la i=0 pana la 
+ i=numberOfLocations-1 cu i++
+Task 07:

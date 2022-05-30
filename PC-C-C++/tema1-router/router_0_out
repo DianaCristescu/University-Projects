@@ -1,0 +1,32 @@
+BEGIN
+Setting up interface: rr-0-1
+Setting up interface: r-0
+Setting up interface: r-1
+*Waiting for packet...*
+*Got packet*
+ARP:
+arp request
+replied ARP
+*Waiting for packet...*
+*Got packet*
+IP:
+forward
+cache[0]:17017024  ip:33597632
+cache[1]:0  ip:33597632
+requested ARP
+*Waiting for packet...*
+*Got packet*
+ARP:
+arp reply
+cache[0]:17017024  ip:33597632
+cache[1]:33597632  ip:33597632 found
+forwarded IP/ICMP packet
+*Waiting for packet...*
+*Got packet*
+ARP:
+arp request
+replied ARP
+*Waiting for packet...*
+*Got packet*
+ICMP:
+*Waiting for packet...*

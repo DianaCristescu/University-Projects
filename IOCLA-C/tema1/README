@@ -1,0 +1,120 @@
+Tema 1 - Sistemul lui Biju
+Cristescu Diana 324CDa
+
+
+touch:
+1.check if the file name already exists
+2.if it doesn't:
+    1.create a new file
+    2.insert the file in the file list:
+        1.get end of file list
+        2.insert the file at the end
+3.else print "File already exists" and return
+
+
+mkdir:
+1.check if the dir name already exists
+2.if it doesn't:
+    1.create a new dir
+    2.insert the dir in the dir list:
+        1.get end of dir list
+        2.insert the dir at the end
+3.else print "Directory already exists" and return
+
+
+ls:
+1.print the dir list
+2.print the file list
+
+
+rm:
+1.If the file list is empty print "Could not find the file" and return
+2.Check if the file is the head of the file list:
+    1.Make the file list point to NULL
+    2.Free the file
+3.The file is not the head of the file list:
+    1.Get our file and the file directly above our file in the file list
+    2.If we couldn't find the file print "Could not find the file" and return
+    3.Make the file directly above our file in the file list point to the next file
+    4.Free the file
+
+
+rmdir:
+1.If the dir list is empty print "Could not find the dir" and return
+2.Check if the dir is the head of the dir list:
+    1.Free the contents of the dir
+    2.Make the dir list point to NULL
+    3.Free the dir
+3.The dir is not the head of the dir list:
+    1.Get our dir and the dir directly above our dir in the dir list
+    2.If we couldn't find the dir print "Could not find the dir" and return
+    3.Free the contents of the dir
+    4.Make the dir directly above our dir in the dir list point to the next dir
+    5.Free the dir
+
+
+cd:
+1.If we want to change cwd to the parent dir:
+    1.Change cwd to parent dir
+2.Else change cwd to specified dir
+    1.Find the specified dir
+    2.If we couldn't find it print "No directories found!" and return
+    3.Change cwd to specified dir
+
+
+pwd: (recursive)
+1.If we found the root dir return "/home"
+2.Else append to the end of the path up until current dir "/the name of the dir"
+
+
+stop:
+1.Free all dirs and files in target dir (home)
+2.Free target dir (home)
+3.Stop main with exit code 0
+
+
+tree:
+*Level was used to determine the number of tabs before a dir/file name
+1.Printing the dir list by recursively calling tree function with level + 1
+2.Printing the file list
+
+
+mv:
+1.Find the dir
+2.Find the file
+3.If we found a dir and a file or neither print "File/Director not found" and return
+4.If a file was found:
+    1.Search for a file that already has the new name of our file
+    2.If we found one print "File/Director already exists" and return
+    3.Search for a dir that already has the new name of our file
+    4.If we found one print "File/Director already exists" and return
+    5.Change the name of our file into the new name
+    6.If the file is the head of the file list:
+        1.If the file list contains only our file return
+        2.Move our file to the end of the file list
+    7.Else:
+        1.Get the file directly above our file in the file list
+        2.Remove our file from the file list
+        3.Add our file to the end of the file list
+5.If a dir was found:
+    1.Search for a file that already has the new name of our file
+    2.If we found one print "File/Director already exists" and return
+    3.Search for a dir that already has the new name of our file
+    4.If we found one print "File/Director already exists" and return
+    5.Change the name of our dir into the new name
+    6.If the dir is the head of the dir list:
+        1.If the dir list contains only our dir return
+        2.Move our dir to the end of the dir list
+    7.Else:
+        1.Get the dir directly above our dir in the dir list
+        2.Remove our dir from the dir list
+        3.Add our dir to the end of the dir list
+
+
+main:
+1.Initialize variables for input processing
+2.Make a home directory and initialize cwd(current working directory)
+3.In a true loop:
+    1.Get input
+    2.Process input into function name, argument 1 and argument 2
+    3.Choose the function and use it

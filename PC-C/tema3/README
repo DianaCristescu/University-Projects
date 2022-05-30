@@ -1,0 +1,73 @@
+Cristescu Diana 314CD
+
+*Am ales biblioteca cJSON pentru ca aceasta a fost recomandata
+si pentru ca avea multa documentatie pe github, ceea ce m-a 
+ajutat sa inteleg cum sa o folosesc.*
+
+Task1:
+
+-am pus fisierul json intr-o variabila de marimea lui
+(am aflat marimea prin ftell) cu ajutorul functiei 
+cJSON_Parse din cJSON
+-am folosit functia cJSON_GetObjectItem pentru a lua
+toate variabilele de din json si dupa le-am scris in 
+fisierul de output in ordinea descrisa in tema3
+-pentru bitmap am aflat marimea lui cu cJSON_GetArraySize
+iar dupa am folosit doua loop-uri for pentru a putea pune
+la sfarsitul fiecarui rand un octet de padding
+-primul for reprezinta numarul randului, iar al doilea
+numarul coloanei din imagine
+-pentru a lua numerele din array-ul bitmap am folosit
+cJSON_GetArrayItem
+-la sfarsit am folosit free pentru toate variabilele 
+alocate folosind malloc(din cate am citit in biblioteca
+cJSON este folosit tot malloc pentru a aloca obiectele)
+
+Task2:
+
+-am folosit fread pentru a citi din fisierul de input si
+fwrite pentru a scrie in output
+-prima data am luat header-ul care e 54 de biti, dupa care
+am folosit doua loop-uri for pentru a citi si scrie bitmap-ul
+cu cifrele in oglinda
+-in interiorul for-ului cu j prima data citesc si scriu 
+boarder-ul negru care e un pixel deci 3 octeti, dupa care
+citesc cei 7 biti care reprezinta numarul cu background-ul
+alb din jurul lui si ii scriu invers
+-dupa for-ul cu j in for-ul cu i pun ultima margine neagra 
+si padding-ul 
+
+Un rand din imagine:  1 = 1 octet; 7 = 7 octeti
+
+1 7 1 7 1 7 1 7 1 7 1 7 1 7 1 7 1 7 1
+|__|                                |
+ |                                  |->partea care 
+ |->partea care                    se citeste si scrie
+ se citeste si scrie               in for-ul cu i
+ in for-ul cu j
+
+*Nu inteleg de ce nu se scrie sau citeste corect ultimul
+rand din imagine(scris in imagine--primul rand de cifre 
+apare alb cand ma uit in imagine...)*
+*Pentru ca nu am putut sa fac Task2 nu am putut continua
+tema...*
+
+Main:
+
+-aici prelucrez numele fisierului de input dat de checker
+pentru a putea sa creez fisierele de output
+-prima data verific folosind argc care este numarul argumentelor
+primite din linia de comanda(in makefile am pus unul implus
+pentru a putea calcula numele fisierelor de output corect in 
+functie de unde rulez programul)
+    ->path-ul fisierului de input e de diferite marimi in 
+    functie de unde rulez sudoku.c
+-prima data folosesc strncpy pentru a afla numele board-ului,
+dupa care folosesc sprintf pentru a construi noul path pentru
+fisierul de output pentru Task1
+-pentru Task2 iau fisierul de output de la Task1 si il deschid
+in alt mod dupa care modific file_name schimband numarul task-ului
+din 1 in 2 si deschid fisierul de output folosind noul nume
+
+fisierele de output arata asa: output_task*_board**.bmp 
+                               * -> cifra

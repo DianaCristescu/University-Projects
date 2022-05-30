@@ -1,0 +1,23 @@
+Starting audit...
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:46:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:49:19: '5' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:50:28: '10.0' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:51:26: '12' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:67:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/OutputChild.java:88:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Output.java:7:19: Variable 'instance' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Output.java:20:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Main.java:35:30: '25' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Main.java:54:39: '18' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Main.java:87:47: '18' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Main.java:115:47: '18' is a magic number. [MagicNumber]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:15:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:15:29: Parameter output should be final. [FinalParameters]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:20:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:20:32: Parameter output should be final. [FinalParameters]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:25:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:25:37: Parameter year should be final. [FinalParameters]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:32:9: 'for' is not followed by whitespace. [WhitespaceAfter]
+[ERROR] /Users/diana/Documents/facultate/an2/sem1/poo/oop-asignments/proiect1/./src/main/Input.java:57:31: Parameter budgetUnit should be final. [FinalParameters]
+Audit done.
+Checkstyle ends with 20 errors.

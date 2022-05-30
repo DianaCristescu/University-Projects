@@ -1,0 +1,13 @@
+//pregatesc variabilele
+//citesc n, m
+//citesc toate nodurile
+
+//Cerinta 1-------------------------------------------------------------------
+    //adaug laturile orientate in listele de adiacenta
+    //verific graful
+    //transform graful orientat intr-un graf neorientat (se poate comenta daca nu trebuia neorientat)
+    //dealoc listele ajutatoare
+    
+//dealocari finale
+
+In tema scrie la cerinta 1 "apoi se va verifica acest graf este un graf neorientat aciclic" iar mai apoi "Pentru a verifica dacă un graf orientat este sau nu aciclic" ,nu sunt sigura daca trebuia sa fac un graf neorientat pentru ca din ce mai e scris pare ca trebuie sa fie orientat. L-am citit si creeat orientat, dupa care la sfarsit l-am facut neorientat. (Daca trebuia orientat se poate comenta penultima sectiune de la cerinta 1)

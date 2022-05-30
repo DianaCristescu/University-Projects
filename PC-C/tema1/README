@@ -1,0 +1,147 @@
+Cristescu Diana - 314CD
+
+
+GATES:
+
+1.1: -  Iau nr si scot bitii(fara sa modific numarul) de pe pozitiile 2^0 pana la 2^(i-1) 
+        dupa care fac si pe biti cu 1 ca sa aflu valoarea bitului de pe pozitia i.
+
+1.2: -  Fac o masca cu 1 pe pozitia i si 0 pe celalalte.
+     -  Testez sa vad daca bitul de pe pozitia i e 1(prima ramura) sau 0(ramura else).
+     -  Inversez masca, acum are 0 pe pozitia i si 1 pe celalalte.  -prima ramura
+     -  Convertesc bitul de pe pozitia i din 1 in 0.                -prima ramura
+     -  Convertesc bitul de pe pozitia i din 0 in 1.                -ramura else
+
+1.3: -  Ori pe biti cu o masca care are 1 pe pozitia 2^i si 0 pe celalalte.
+
+1.4: -  Si pe biti cu o masca care are 0 pe pozitia 2^i si 1 pe celalalte.
+
+2.1: -  Pt ca nand e and negat am negat rezultatul de la nand cu un al doilea nand si am obtinut and.
+
+2.2: -  Din tabelul de adevar stim ca nand cu 1 intoarce inversul asa ca am facut nand la a cu 1 ca sa obtin rezultatul de la not.
+
+2.3: -  Stim ca A+B = !(!(A+B)) = !(!A*!B) , adica nand de a negat si b negat.
+
+2.4: -  Stim ca !AB + A!B = xor.
+
+3.1: -  Am initializat un contor i=0 care sa numere de cate ori apare 1.
+     -  Am incrementat pe rand contorul cu 1 daca a, b si c e 1.
+     -  In functie de  cate ori apare 1 am scris 3 cazuri:
+        -> 0 ori  = 0 suma, 0 carry     ------>  00 in binar (0 in dec)
+        -> 1 data = 1 suma, 0 carry     ------>  10 in binar (2 in dec)
+        -> 2 ori  = 0 suma, 1 carry     ------>  01 in binar (1 in dec)
+        -> 3 ori  = 1 suma, 1 carry     ------>  11 in binar (3 in dec)
+
+3.2: -  Am facut un for de la 0 la 63 ca sa pot trece prin toti bitii de la cel de pe pozitia 0 pana la 63.
+     -  Am folosit functia get_bit ca sa iau bitul de pe pozitia 1 din rezultatul functiei full_adder pe care 
+        o apelez cu parametrii bitul de pe pozitia i din a, respectiv b(folosind iar get_bit) si carry care initial este 0.
+     -  Testez daca mi-a dat suma 0 sau 1 ca sa vad daca trebuie sa activez bitul de pe pozitia i din res.
+     -  Activez bitul de pe pozitia i din res folosind un or cu o masca de 64 de biti cu 1 pe pozitia i si 0 in rest.
+     -  Calculez carry-ul pt urmatoarea bucla for folosind aceeasi metoda ca la suma doar ca de data asta iau bitul de pe
+        pozitia 0 din full_adder.
+     -  Testez daca mi-a mai ramas un carry la ultima operatie(de pe bitul 63) si daca da fac res=0.
+
+
+
+COMMUNICATION:
+
+1.1: -  Am trimis codurile fiecarei litere din cuvant cu send_squanch.
+
+1.2: -  Am primit codul special cu recv_squanch si l-am convertit in codul ascii al aceluiasi caracter cu +64 iar apoi l-am 
+        convertit in char si l-am printat.
+
+1.3: -  Am doua for-uri unul de la 0 pana la 9, iar altul de la 0 la 1, in primul primesc codul caracterului iar in al
+        doilea care este in interiorul primului trimit codul primit(de doua ori pt ca atata tine for-ul).
+
+2.1: -  Trimit lungimea care e 10 codata ca un (uint8_t)10 shiftat de 2 ori la stanga care e in binar 00101000.
+     -  Trimit ca la 1.1 fiecare caracter.
+
+2.2: -  Decodez lungimea shiftand la stanga de 2 ori si dupa la dreapta de 4 ori.
+     -  Iau ultima cifra din len(cifra unitatilor) si iau prima cifra din len(cifra zecilor) si le printez separat.
+     -  Am un for de la 0 pana la len-1 in care primesc codul caracterului caruia ii adaug 64 si il convertesc intr-un
+        char pe care dupa il printez.
+
+2.3: -  Primesc si decodez lungimea ca la 2.2.
+     -  Initializez o variabila check care este 0 la inceput si devine 1 doar daca ultima litera din mesajul primit are
+        codul egal cu 16(codul lui P).
+     -  Iau un for de la o la len-1 in care primesc caracterele din mesaj pana ajung la len-1 cand verific daca caracterul primit e P.
+     -  Daca check e 1 trimit ca la 2.1 lungimea si mesajul PICKLERICK, daca e 0 VINDICATORS.
+
+3.1: -  Fac copii dupa c1 si c2 ca sa nu le stric.
+     -  Am un for de la 0 la 7 in care testez daca ultimul bit din c2, apoi c1 este 1, iar daca este pt c2 activez bitul i din
+        res(care e 0 la inceput), iar pt c1 activez bitul i+1.
+     -  Shiftez la dreapta cu 1 copiile de la c1 si c2 si dupa for trimit res.
+
+3.2: -  Imi fac doua masti, una pt de la inceputul nr pana la mijloc(m1), iar alta pt de la mijloc la finalul nr(m2).
+     -  Am un for de la 0 la 7(i creste cu 2) in care testez daca bitul i si i+1 sunt 1,iar daca sunt pt i activez 
+        res(e 0 la inceput) cu m1, iar pt i+1 activez res cu m2. Apoi shiftez ambele masti la stanga cu 1.
+
+
+
+HUNT:
+
+1.1: -  Folosesc un while ca sa ciclez prin bitii din memory pana gasesc 5 biti consecutivi de 1.
+     -  Testez daca bitul j e 1 sau 0, iar daca e 1 cresc i-ul, daca e 0 fac i=0.
+     -  Cresc j-ul la fiecare ciclare(acesta retine pozitia, pe cand i retine numarul de 1).
+     -  Ajustez masca pentru a putea afla bitul corect in urmatoarul ciclu.
+     -  Acum ca am gasit pozitia de la care incepe vraja pot sa o extrag shiftand la stanga memory
+        de 64-16(cat de lunga e vraja)-j(cati biti stim ca sunt inainte vraja), iar apoi la dreapta 
+        cu 64-16 ca sa ne ramana fix cei 16 biti pe care ii dorim si convertesc la uint16_t.
+
+1.2: -  Fac ce am facut si la 1.1 doar ca in loc sa testez pt 5 biti de 1 consecutivi testez pentru
+        3, iar cand formez res shiftez mai intai la stanga cu 64-(j-3)(adica prin cati biti a trecut 
+        deja inclusiv key).
+     -  j = cati biti sunt pana la capatul celor 3  de 1 => j-3 = cati biti sunt inclusiv key.
+
+1.3: -  Iau valorile bitilor i din key si spell.
+     -  Daca spell are bitul de pe pozitia i 1, iar key il are 0 atunci activez bitul de pe pozitia
+        i din res(care e initializat cu (uint16_t)0).
+     -  Daca spell are bitul de pe pozitia i 0, iar key il are 1 atunci activez bitul de pe pozitia
+        i din res.
+
+2.1: -  Numar cati de 1 sunt in enemy.
+     -  Daca exista un nr par de 1 in enemy atunci pun pe cei 4 biti de tip 1001 si calculez value
+        pt monstrii.
+     -  Daca nr de 1 din enemy e impar pun pe cei 4 biti de type 0110 si calculez value pt oameni
+     -  Pun pe res valoarea lui value convertindu-l mai intai in uint32_t, iar apoi facand sau pe
+        biti cu res care e (uint32_t)0.
+
+3.1: -  notez low_antibodies cu l, high_antibodies cu h si cocktail cu c si fac operatiile pt un bit oarecare din numere
+     -  (h & c) ^ (l | c) = 0  => (h & c) = (l | c)
+        -  caz I:  (h & c) = (l | c) = 1  => h, l si c pot lua valorile:
+                    1   1     1   1
+                              0   1
+                              1   0 - NU pt ca c=1 neaparat altfel nu mai iese h&c=1
+        -  caz II: (h & c) = (l | c) = 0  => h, l si c pot lua valorile: 
+                    0   0     0   0
+                    1   0
+                    0   1 - NU pt ca c=0 neaparat altfel nu mai iese l|c=0
+        =>  daca c = 1 => h = 1
+            daca c = 0 => l = 0                      
+     -  l & h = 0  =>  h si l pot lua valorile:
+        0   0
+        0   1
+        1   0 - NU se poate pt ca urmatoarea conditie(l|h=c) exclude cazul asta
+     -  l | h = c  =>  h, l si c pot lua valorile:
+        0   0   0
+        0   1   1
+        1   1   1 - NU se poate pt ca conditia de dinainte(l&h=0) exclude cazul asta
+     => se poate observa ca mereu h are aceeasi valoare cu c, iar l ramane 0 mereu  
+     => high_antibodies == cocktail si low_antibodiess == 0
+     -  este suficient sa fac sau pe biti intre (cockail << 16) si res(pe care il declar 0)
+
+3.2: -  Am un for de la 0 la 63  in care mi se testeaza daca bitul i din map este 1 sau 0.
+     -  Daca este 1 j se incrementeaza. 
+     -  Daca este 0 se testeaza daca j=2, i=33(sa fie la mijlocul numarului cei doi de 1) si daca au fost 33 de 0 pana
+        acum(adica doar 0 fara cei doi de 1) si daca trece inseamna ca is_Brokilon=0 si is_Hindar=1(dar nu se termina aici pt Hindar).
+     -  Daca nu trece de primul test atunci se testeaza daca j e altceva decat 4 sau 0 si daca is_Hindar e inca 0 si daca trece
+        is_Brokilon devine 0 si loop-ul for se sfarseste cu un break.
+     -  Tot pe ramura else dupa if-uri se face j=0 si se incrementeaza nr_of_0.
+     -  Dupa for se testeaza daca j e 64(adica map contine doar 1) si daca da inseamna ca is_Wolven_Glade e 1 si is_Brokilon e 0 
+        si se mai testeaza daca is_Hindar e 1 si nu sunt 62 de 0(64-2de1) si daca trece se face is_Hindar 0.
+     -  Dupa urmeaza mai multe if_uri in care testeaza daca e Brokilon, Hindar, Wolen Glade si se face res nr corespunzator iar
+        daca nu e nici una res se face 3.
+
+3.3: -  Am un j=0 si un j_occupied=1(retine daca pozitia j a fost sau nu deja setata).
+     -  Intr-un for de la 0 la 63 testez daca bitul i e 1 si daca e si j nu a fost deja setat il fac pe j egal cu i, iar 
+        daca a fost setat inainte fac res = diferenta dintre i si j(i e mai mare).
